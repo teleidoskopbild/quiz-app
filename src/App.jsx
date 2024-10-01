@@ -1,16 +1,23 @@
 import { useState } from "react";
 import "./App.css";
 import QuestionPage from "./components/QuestionPage";
-// import { quizQuestions } from "./data/questions";
+import WelcomePage from "./components/WelcomePage.jsx";
 
-// const [page, setPage] = useState("quiz");
-
-function App() {
-  const [page, setPage] = useState("quiz");
+export default function App() {
+  const [page, setPage] = useState("welcome");
   const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [currentUser, setCurrentUser] = useState({});
 
   return (
     <div>
+      {page === "welcome" && (
+        <WelcomePage
+          setPage={setPage}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
+      )}
+
       {page === "quiz" && (
         <QuestionPage
           setPage={setPage}
@@ -28,5 +35,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
