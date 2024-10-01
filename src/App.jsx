@@ -1,12 +1,47 @@
 import { useState } from "react";
-import AdvertisementPage from "./components/Ads-page";
-
 import "./App.css";
+import QuestionPage from "./components/QuestionPage";
+import WelcomePage from "./components/WelcomePage.jsx";
+import AdvertisementPage from "./components/Ads-page.jsx";
+import ResultPage from "./components/ResultsPage.jsx";
 
-function App() {
-  const [page, setPage] = useState("ads");
+export default function App() {
+  const [page, setPage] = useState("welcome");
+  const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [currentUser, setCurrentUser] = useState({});
 
-  return <div>{page === "ads" && <AdvertisementPage setPage={setPage} />}</div>;
+  return (
+    <div>
+      {page === "welcome" && (
+        <WelcomePage
+          setPage={setPage}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
+      )}
+
+      {page === "quiz" && (
+        <QuestionPage
+          setPage={setPage}
+          correctAnswers={correctAnswers}
+          setCorrectAnswers={setCorrectAnswers}
+        />
+      )}
+
+      {page === "ads" && (
+        <div>
+          <AdvertisementPage
+            setPage={setPage}
+            currentUser={currentUser}
+          ></AdvertisementPage>
+        </div>
+      )}
+
+      {page === "result" && (
+        <div>
+          <ResultPage setPage={setPage} currentUser={currentUser}></ResultPage>
+        </div>
+      )}
+    </div>
+  );
 }
-
-export default App;

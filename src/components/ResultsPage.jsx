@@ -1,8 +1,7 @@
-import { useLocation } from "react-router-dom";
+import { useState } from "react";
 
 const ResultPage = () => {
-  const { state } = useLocation();
-  const { score, total } = state || { score: 0, total: 0 };
+  const { score, total } = useState();
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>

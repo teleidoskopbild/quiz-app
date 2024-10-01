@@ -1,6 +1,6 @@
 import quiz from "../assets/quiz.jpg";
 
-const AdvertisementPage = ({ setPage }) => {
+const AdvertisementPage = ({ setPage, currentUser }) => {
   return (
     <div className="container">
       <h1>Advertisement Page</h1>
