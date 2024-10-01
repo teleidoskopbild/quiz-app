@@ -4,7 +4,7 @@ import { quizQuestions } from "../data/questions";
 
 const shuffleArray = (array) => array.toSorted(() => Math.random() - 0.5);
 
-function QuestionPage({ setPage, correctAnswers, setCorrectAnswers }) {
+function QuestionPage({ setPage, /*correctAnswers,*/ setCorrectAnswers }) {
   // const questions = quizQuestions;
   // const [questions] = useState(shuffleArray([...quizQuestions]));  // <------- needs to be a state otherwise shuffles on every re-render
   const [questions] = useState(
@@ -56,8 +56,8 @@ function QuestionPage({ setPage, correctAnswers, setCorrectAnswers }) {
 
   return (
     <div className={`quiz-container ${buttonsDisabled ? "disabled" : ""}`}>
-      <h1>Quiz Page</h1>
-      <h2>{question.question}</h2>
+      <h1 className="quiz-title">Quiz Page</h1>
+      <h2 className="quiz-question">{question.question}</h2>
       <div className="options-container">
         {question.options.map((option) => (
           <button
@@ -69,12 +69,16 @@ function QuestionPage({ setPage, correctAnswers, setCorrectAnswers }) {
           </button>
         ))}
       </div>
-      <button onClick={handleNextQuestion} disabled={selectedAnswer === null}>
+      <button
+        className="next-button"
+        onClick={handleNextQuestion}
+        disabled={selectedAnswer === null}
+      >
         {currentIndex < questions.length - 1 ? "Next Question" : "Finish Quiz"}
       </button>
-      <div className="score">
+      {/* <div className="score">
         Score: {correctAnswers} / {questions.length}
-      </div>
+      </div> */}
     </div>
   );
 }
