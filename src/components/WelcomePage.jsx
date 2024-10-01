@@ -22,7 +22,7 @@ export default function WelcomePage({ setPage }) {
           <p>Test your knowledge and enjoy the quiz!</p>
           <button
             onClick={() => {
-              setPage("Questions");
+              setPage("quiz");
             }}
           >
             Zur nächsten Seite
