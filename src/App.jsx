@@ -2,6 +2,8 @@ import { useState } from "react";
 import "./App.css";
 import QuestionPage from "./components/QuestionPage";
 import WelcomePage from "./components/WelcomePage.jsx";
+import AdvertisementPage from "./components/Ads-page.jsx";
+import ResultPage from "./components/ResultsPage.jsx";
 
 export default function App() {
   const [page, setPage] = useState("welcome");
@@ -28,8 +30,16 @@ export default function App() {
 
       {page === "ads" && (
         <div>
-          <h1>Ads Page</h1>
-          <p>Check out these ads!</p>
+          <AdvertisementPage
+            setPage={setPage}
+            currentUser={currentUser}
+          ></AdvertisementPage>
+        </div>
+      )}
+
+      {page === "result" && (
+        <div>
+          <ResultPage setPage={setPage} currentUser={currentUser}></ResultPage>
         </div>
       )}
     </div>
