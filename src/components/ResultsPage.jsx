@@ -1,16 +1,13 @@
 import { useState } from "react";
+import { quizQuestions } from "../data/questions.js";
 
-const ResultPage = () => {
-  const { score, total } = useState();
-
+const ResultPage = ({ correctAnswers }) => {
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div className="result-page">
       <h1>Result</h1>
       <p>
-        Your score: {score} out of {total}
+        Your score: {correctAnswers} out of {quizQuestions.length}
       </p>
-      <p>Success: {Math.round((score / total) * 100)}%</p>
-      <p>Failed: {Math.round(((total - score) / total) * 100)}%</p>
     </div>
   );
 };
