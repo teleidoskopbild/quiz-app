@@ -4,6 +4,7 @@ import QuestionPage from "./components/QuestionPage";
 import WelcomePage from "./components/WelcomePage.jsx";
 import AdvertisementPage from "./components/Ads-page.jsx";
 import ResultPage from "./components/ResultsPage.jsx";
+import RegiserPage from "./components/RegistrationPage.jsx";
 
 export default function App() {
   const [page, setPage] = useState("welcome");
@@ -19,7 +20,13 @@ export default function App() {
           setCurrentUser={setCurrentUser}
         />
       )}
-
+      {page === "register" && (
+        <RegiserPage
+          setPage={setPage}
+          currentUser={currentUser}
+          setCurrentUser={setCurrentUser}
+        />
+      )}
       {page === "quiz" && (
         <QuestionPage
           setPage={setPage}

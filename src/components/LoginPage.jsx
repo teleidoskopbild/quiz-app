@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { users } from "./Users.js";
 import RegistrationForm from "./RegistrationPage.jsx";
+import "./WelcomePage.css";
 
-export default function LoginPage({ onLogin }) {
+export default function LoginPage({ onLogin, setPage }) {
   const [inputValue, setInputValue] = useState({
     username: "",
     password: "",
@@ -10,13 +11,14 @@ export default function LoginPage({ onLogin }) {
   const [showRegistration, setShowRegistration] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
-  let errors = {
-    username: false,
-    password: false,
-  };
+  // let errors = {
+  //   username: false,
+  //   password: false,
+  // };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    console.log(event);
     const validUser = users.find(
       (item) =>
         item.username === inputValue.username &&
@@ -26,17 +28,26 @@ export default function LoginPage({ onLogin }) {
     if (validUser) {
       setErrorMessage("");
       onLogin();
-    } else {
-      // setErrorMessage(errors);
+    } else if (!inputValue.username && !inputValue.password) {
       setErrorMessage("Ungültige Username oder Passwort.");
+    } else if (!inputValue.username) {
+      // errors.username = true;
+      setErrorMessage("Username dar nicht leer sein");
+      console.log(errorMessage.username, errorMessage.password);
+      // setErrorMessage("Ungültige Username oder Passwort.");
+    } else if (!inputValue.password) {
+      // errors.password = true;
+      setErrorMessage("password dar nicht leer sein");
     }
   };
-  if (showRegistration) {
-    return <RegistrationForm />;
-  }
+  // if (showRegistration) {
+  //   return <RegistrationForm />;
+  // }
+  <RegistrationForm setPage={setPage} />;
+
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div class="login-container">
+      <form onSubmit={handleSubmit} class="login-form">
         <div>
           <label htmlFor="username">Username: </label>
           <input
@@ -47,8 +58,8 @@ export default function LoginPage({ onLogin }) {
               setInputValue({ ...inputValue, username: e.target.value })
             }
           />
-          {errorMessage.username && !inputValue.username ? (
-            <p>username darf nicht leer sein</p>
+          {errorMessage && !inputValue.username ? (
+            <p>{errorMessage}</p>
           ) : undefined}
         </div>
         <div>
@@ -62,12 +73,28 @@ export default function LoginPage({ onLogin }) {
             }
           />
         </div>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        <button type="submit">Login</button>
-        <div className="App">
+        {/* {errorMessage && (
+          <p style={{ color: "red" }}>{errorMessage.username}</p>
+        )} */}
+        {errorMessage && !inputValue.password ? (
+          <p>{errorMessage}</p>
+        ) : undefined}
+        <div class="button-row">
+          <button type="submit">Login</button>
           {/* <button onClick={() => RegistrationForm()}>Registrieren</button> */}
-          <button onClick={() => setShowRegistration(true)}>
+          <button
+            onClick={() => {
+              setPage("register");
+            }}
+          >
             Registrieren
+          </button>
+          <button
+            onClick={() => {
+              setPage("quiz");
+            }}
+          >
+            Quiz Start!
           </button>
         </div>
       </form>
