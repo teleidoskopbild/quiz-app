@@ -49,7 +49,7 @@ img:hover {
 }
 
 /* Regular button styling */
-button {
+.result_btn {
   padding: 10px 20px;
   margin-top: 20px;
   background-color: #4caf50;
@@ -60,6 +60,6 @@ button {
   transition: background-color 0.3s ease;
 }
 
-button:hover {
+.result_btn:hover {
   background-color: #45a049;
 }
