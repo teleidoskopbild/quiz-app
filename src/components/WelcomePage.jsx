@@ -7,27 +7,31 @@ import "./WelcomePage.css";
 
 export default function WelcomePage({ setPage }) {
   const [loggedIn, setLoggedIn] = useState(false);
-  const handleLogin = () => {
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+
+  const handleLogin = (firstname, lastname) => {
     setLoggedIn(true);
-    console.log(loggedIn);
+    setFirstname(firstname);
+    setLastname(lastname);
   };
 
   return (
     <>
       {!loggedIn ? (
-        <div class="login">
-          <div class="login-text">
-            <h2>Let's play quiz!</h2>
-            <img src={loginImage} alt="Quiz App" />
+        <div className="login">
+          <div className="login-text">
+            <h2>Let&#39;s play quiz!</h2>
+            <img id="theme-image" src={loginImage} alt="Quiz App" />
 
             <p>Enter your information below</p>
           </div>
           <LoginPage onLogin={handleLogin} setPage={setPage} />
         </div>
       ) : (
-        <div class="welcome-container">
+        <div className="welcome-container">
           <h2>
-            Welcome to Quiz App <span id="user"></span>!
+            Welcome to Quiz App <span>{`${firstname}  ${lastname}!`}</span>!
           </h2>
           <img src={welcomeImage} alt="Quiz App" className="welcome-image" />
 

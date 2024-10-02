@@ -9,8 +9,15 @@ export const users = [
   {
     firstname: "lili",
     lastname: "Müller",
-    username: "test",
-    password: "Pass",
+    username: "lili",
+    password: "lili",
+    email: "Müller@gmx.de",
+  },
+  {
+    firstname: "lili",
+    lastname: "Müller",
+    username: "user",
+    password: "pass",
     email: "Müller@gmx.de",
   },
 ];
