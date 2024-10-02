@@ -1,16 +1,20 @@
 import { useState } from "react";
-import { users } from "./Users.js";
+// import { users } from "./data/Users.js";
 import RegistrationForm from "./RegistrationPage.jsx";
 import "./WelcomePage.css";
 
-export default function LoginPage({ onLogin, setPage }) {
+export default function LoginPage({
+  onLogin,
+  setPage,
+  showPage,
+  setShowPage,
+  users,
+}) {
   const [inputValue, setInputValue] = useState({
     username: "",
     password: "",
     firstname: "",
   });
-  // const [showRegistration, setShowRegistration] = useState(false);
-
   const [errorMessage, setErrorMessage] = useState({
     username: "",
     password: "",
@@ -50,13 +54,19 @@ export default function LoginPage({ onLogin, setPage }) {
         password: "",
       });
       onLogin(validUser.firstname, validUser.lastname);
+      setPage("quiz");
     }
     // setSubmitData();
   };
   // if (showRegistration) {
   //   return <RegistrationForm />;
   // }
-  <RegistrationForm setPage={setPage} />;
+
+  // <RegistrationForm
+  //   setPage={setPage}
+  //   showPage={showPage}
+  //   setShowPage={setShowPage}
+  // />;
 
   return (
     <div className="login-container">
@@ -70,6 +80,9 @@ export default function LoginPage({ onLogin, setPage }) {
             onChange={(e) =>
               setInputValue({ ...inputValue, username: e.target.value })
             }
+            style={{
+              border: errorMessage.username ? "1px solid red" : "",
+            }}
           />
           {/* {errorMessage.username && <p>{errorMessage.username}</p>} */}
           {errorMessage.username && !inputValue.username ? (
@@ -85,6 +98,9 @@ export default function LoginPage({ onLogin, setPage }) {
             onChange={(e) =>
               setInputValue({ ...inputValue, password: e.target.value })
             }
+            style={{
+              border: errorMessage.username ? "1px solid red" : "",
+            }}
           />
         </div>
 
@@ -96,14 +112,14 @@ export default function LoginPage({ onLogin, setPage }) {
           {/* <button onClick={() => RegistrationForm()}>Registrieren</button> */}
           <button
             onClick={() => {
-              setPage("register");
+              setShowPage("register");
             }}
           >
             Registrieren
           </button>
           <button
             onClick={() => {
-              setPage("quiz");
+              setPage("categories");
             }}
           >
             Quiz Start!

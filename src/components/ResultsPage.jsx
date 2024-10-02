@@ -1,10 +1,14 @@
-import { quizQuestions } from "../data/questions.js";
-import "./ResultsPage.css";
+const ResultPage = ({
+  correctAnswers,
+  setPage,
+  setCorrectAnswers,
+  quizQuestions,
+}) => {
+  // This function will reload the page to allow the user to try again
 
-const ResultPage = ({ correctAnswers, setPage, setCorrectAnswers }) => {
   return (
     <div className="result-page">
-      <h1>Result</h1>
+      <h2 className="result-title">Result</h2>
       <p>
         Your score: {correctAnswers} out of {quizQuestions.length}
       </p>
@@ -13,14 +17,18 @@ const ResultPage = ({ correctAnswers, setPage, setCorrectAnswers }) => {
       {correctAnswers >= quizQuestions.length ? (
         <p>This is great!</p> /* Show "This is great" message */
       ) : (
-        <button
-          onClick={() => {
-            setPage("quiz");
-            setCorrectAnswers(0);
-          }}
-        >
-          Try Again
-        </button> /* Show "Try Again" button */
+        <>
+          <button
+            className="result-btn"
+            onClick={() => {
+              setPage("categories");
+              setCorrectAnswers(0);
+            }}
+          >
+            Try Again
+          </button>{" "}
+          {/* Show "Try Again" button */}
+        </>
       )}
     </div>
   );

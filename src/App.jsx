@@ -5,11 +5,14 @@ import WelcomePage from "./components/WelcomePage.jsx";
 import AdvertisementPage from "./components/Ads-page.jsx";
 import ResultPage from "./components/ResultsPage.jsx";
 import RegiserPage from "./components/RegistrationPage.jsx";
+import CategoriesPage from "./components/CategoriesPage.jsx";
 
 export default function App() {
   const [page, setPage] = useState("welcome");
   const [correctAnswers, setCorrectAnswers] = useState(0);
   const [currentUser, setCurrentUser] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [quizQuestions, setQuizQuestions] = useState([]);
 
   return (
     <div>
@@ -27,11 +30,20 @@ export default function App() {
           setCurrentUser={setCurrentUser}
         />
       )}
+      {page === "categories" && (
+        <CategoriesPage
+          setPage={setPage}
+          setSelectedCategory={setSelectedCategory}
+          setQuizQuestions={setQuizQuestions}
+        />
+      )}
       {page === "quiz" && (
         <QuestionPage
           setPage={setPage}
           correctAnswers={correctAnswers}
           setCorrectAnswers={setCorrectAnswers}
+          selectedCategory={selectedCategory}
+          quizQuestions={quizQuestions}
         />
       )}
 
@@ -50,6 +62,7 @@ export default function App() {
             setPage={setPage}
             correctAnswers={correctAnswers}
             setCorrectAnswers={setCorrectAnswers}
+            quizQuestions={quizQuestions}
           ></ResultPage>
         </div>
       )}
