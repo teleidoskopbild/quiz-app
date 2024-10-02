@@ -7,38 +7,51 @@ export default function LoginPage({ onLogin, setPage }) {
   const [inputValue, setInputValue] = useState({
     username: "",
     password: "",
+    firstname: "",
   });
-  const [showRegistration, setShowRegistration] = useState(false);
+  // const [showRegistration, setShowRegistration] = useState(false);
 
-  const [errorMessage, setErrorMessage] = useState("");
-  // let errors = {
-  //   username: false,
-  //   password: false,
-  // };
+  const [errorMessage, setErrorMessage] = useState({
+    username: "",
+    password: "",
+  });
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(event);
+    let errors = {};
+    let hasError = false;
+
     const validUser = users.find(
       (item) =>
         item.username === inputValue.username &&
         item.password === inputValue.password
     );
-
-    if (validUser) {
-      setErrorMessage("");
-      onLogin();
-    } else if (!inputValue.username && !inputValue.password) {
-      setErrorMessage("Ungültige Username oder Passwort.");
-    } else if (!inputValue.username) {
-      // errors.username = true;
-      setErrorMessage("Username dar nicht leer sein");
-      console.log(errorMessage.username, errorMessage.password);
-      // setErrorMessage("Ungültige Username oder Passwort.");
-    } else if (!inputValue.password) {
-      // errors.password = true;
-      setErrorMessage("password dar nicht leer sein");
+    if (!inputValue.username) {
+      errors.username = "Username darf nicht leer sein";
+      hasError = true;
     }
+
+    if (!inputValue.password) {
+      errors.password = "Password darf nicht leer sein";
+      hasError = true;
+    }
+
+    if (hasError) {
+      setErrorMessage(errors);
+      return;
+    }
+    if (validUser) {
+      setInputValue({
+        username: "",
+        password: "",
+      });
+      setErrorMessage({
+        username: "",
+        password: "",
+      });
+      onLogin(validUser.firstname, validUser.lastname);
+    }
+    // setSubmitData();
   };
   // if (showRegistration) {
   //   return <RegistrationForm />;
@@ -46,8 +59,8 @@ export default function LoginPage({ onLogin, setPage }) {
   <RegistrationForm setPage={setPage} />;
 
   return (
-    <div class="login-container">
-      <form onSubmit={handleSubmit} class="login-form">
+    <div className="login-container">
+      <form onSubmit={handleSubmit} className="login-form">
         <div>
           <label htmlFor="username">Username: </label>
           <input
@@ -58,8 +71,9 @@ export default function LoginPage({ onLogin, setPage }) {
               setInputValue({ ...inputValue, username: e.target.value })
             }
           />
-          {errorMessage && !inputValue.username ? (
-            <p>{errorMessage}</p>
+          {/* {errorMessage.username && <p>{errorMessage.username}</p>} */}
+          {errorMessage.username && !inputValue.username ? (
+            <p>{errorMessage.username}</p>
           ) : undefined}
         </div>
         <div>
@@ -73,13 +87,11 @@ export default function LoginPage({ onLogin, setPage }) {
             }
           />
         </div>
-        {/* {errorMessage && (
-          <p style={{ color: "red" }}>{errorMessage.username}</p>
-        )} */}
-        {errorMessage && !inputValue.password ? (
-          <p>{errorMessage}</p>
+
+        {errorMessage.password && !inputValue.password ? (
+          <p>{errorMessage.password}</p>
         ) : undefined}
-        <div class="button-row">
+        <div className="button-row">
           <button type="submit">Login</button>
           {/* <button onClick={() => RegistrationForm()}>Registrieren</button> */}
           <button
