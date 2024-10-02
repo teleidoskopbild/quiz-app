@@ -38,7 +38,7 @@ export default function WelcomePage({ setPage }) {
           <p>Test your knowledge and enjoy the quiz!</p>
           <button
             onClick={() => {
-              setPage("quiz");
+              setPage("categories");
             }}
           >
             Quiz starten

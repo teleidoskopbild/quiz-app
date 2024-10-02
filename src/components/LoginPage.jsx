@@ -103,7 +103,7 @@ export default function LoginPage({ onLogin, setPage }) {
           </button>
           <button
             onClick={() => {
-              setPage("quiz");
+              setPage("categories");
             }}
           >
             Quiz Start!

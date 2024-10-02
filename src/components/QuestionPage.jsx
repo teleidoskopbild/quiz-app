@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./QuestionsPage.css";
-import { quizQuestions } from "../data/questions";
+// import { quizQuestions } from "../data/programmingQuestions";
 
 const shuffleArray = (array) => array.toSorted(() => Math.random() - 0.5);
 
-function QuestionPage({ setPage, /*correctAnswers*/ setCorrectAnswers }) {
+function QuestionPage({ setPage, setCorrectAnswers, quizQuestions }) {
   // const questions = quizQuestions;
   // const [questions] = useState(shuffleArray([...quizQuestions]));  // <------- needs to be a state otherwise shuffles on every re-render
   const [questions] = useState(
@@ -18,7 +18,6 @@ function QuestionPage({ setPage, /*correctAnswers*/ setCorrectAnswers }) {
     )
   );
 
-  console.log(questions);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   // const [correctAnswers, setCorrectAnswers] = useState(0); <--------------------- in App.jsx now
@@ -35,23 +34,22 @@ function QuestionPage({ setPage, /*correctAnswers*/ setCorrectAnswers }) {
     if (selectedAnswer) {
       setAnswerStatus(selectedAnswer.isCorrect ? "correct" : "wrong");
       setButtonsDisabled(true);
-    }
-    setTimeout(() => {
       if (selectedAnswer.isCorrect) {
         setCorrectAnswers((prev) => prev + 1);
       }
-
+    }
+    setTimeout(() => {
       if (currentIndex < questions.length - 1) {
-        setSelectedAnswer(null);
-        setAnswerStatus("");
         setCurrentIndex((prevIndex) => prevIndex + 1);
       } else {
         setPage("ads");
       }
+      setAnswerStatus();
+      setSelectedAnswer(null);
       setButtonsDisabled(false);
     }, 1000);
   };
-
+  console.log(selectedAnswer);
   const question = questions[currentIndex];
 
   return (
