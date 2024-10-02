@@ -119,7 +119,7 @@ export default function LoginPage({
           </button>
           <button
             onClick={() => {
-              setPage("quiz");
+              setPage("categories");
             }}
           >
             Quiz Start!

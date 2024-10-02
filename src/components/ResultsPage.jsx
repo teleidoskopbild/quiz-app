@@ -1,6 +1,9 @@
-import { quizQuestions } from "../data/questions.js";
-
-const ResultPage = ({ correctAnswers, setPage, setCorrectAnswers }) => {
+const ResultPage = ({
+  correctAnswers,
+  setPage,
+  setCorrectAnswers,
+  quizQuestions,
+}) => {
   // This function will reload the page to allow the user to try again
 
   return (
@@ -18,7 +21,7 @@ const ResultPage = ({ correctAnswers, setPage, setCorrectAnswers }) => {
         <>
           <button
             onClick={() => {
-              setPage("quiz");
+              setPage("categories");
               setCorrectAnswers(0);
             }}
           >

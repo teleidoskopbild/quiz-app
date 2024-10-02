@@ -1,4 +1,4 @@
-export const quizQuestions = [
+export const programmingQuizQuestions = [
   {
     id: 1,
     question: "What does HTML stand for?",

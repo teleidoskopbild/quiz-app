@@ -91,3 +91,9 @@ button {
     padding: 0;
   }
 }
+
+@media (prefers-color-scheme: light) {
+  .quiz-title {
+    color: #232121;
+  }
+}
