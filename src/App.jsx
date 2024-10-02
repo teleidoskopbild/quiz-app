@@ -46,7 +46,11 @@ export default function App() {
 
       {page === "result" && (
         <div>
-          <ResultPage setPage={setPage} currentUser={currentUser}></ResultPage>
+          <ResultPage
+            setPage={setPage}
+            correctAnswers={correctAnswers}
+            setCorrectAnswers={setCorrectAnswers}
+          ></ResultPage>
         </div>
       )}
     </div>
