@@ -8,18 +8,18 @@ const ResultPage = ({
 
   return (
     <div className="result-page">
-      <h1>Result</h1>
+      <h2 className="result-title">Result</h2>
       <p>
         Your score: {correctAnswers} out of {quizQuestions.length}
       </p>
+
       {/* Conditional Rendering */}
       {correctAnswers >= quizQuestions.length ? (
-        <>
-          <p>This is great</p> {/* Show "This is great" message */}
-        </>
+        <p>This is great!</p> /* Show "This is great" message */
       ) : (
         <>
           <button
+            className="result-btn"
             onClick={() => {
               setPage("categories");
               setCorrectAnswers(0);

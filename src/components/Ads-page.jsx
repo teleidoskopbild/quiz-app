@@ -1,21 +1,30 @@
 import "./ads-page.css"; // Import the CSS file
-import car from "../assets/car.png";
+import car from "../assets/car.mp4"; // Update to import the video file
 
-const AdvertisementPage = ({ setPage, currentUser }) => {
+const AdvertisementPage = ({ setPage }) => {
   return (
     <div className="container">
       <header>
-        <h1>Advertisement Page</h1>
+        <h2 className="ads-title">Advertisement Page</h2>
       </header>
 
       <main>
         <section>
-          <img src={car} alt="Advertisement for car" />
+          {/* Replace <img> with <video> */}
+          <video
+            src={car}
+            alt="Advertisement for car"
+            controls
+            autoPlay
+            loop
+            style={{ width: "100%", maxHeight: "400px", borderRadius: "20px" }} // Inline styles for quick adjustments
+          >
+            Your browser does not support the video tag.
+          </video>
         </section>
 
         <section>
           <a href="https://google.com" className="btn">
-            {" "}
             Learn More
             <i className="fas fa-info-circle"></i>
           </a>
@@ -23,10 +32,9 @@ const AdvertisementPage = ({ setPage, currentUser }) => {
       </main>
 
       <footer>
-        <button onClick={() => setPage("result")}>
-          {" "}
+        <button className="result_btn" onClick={() => setPage("result")}>
           Go to Result Page
-          <i className="fas fa-arrow-right"></i>{" "}
+          <i className="fas fa-arrow-right"></i>
         </button>
       </footer>
     </div>
