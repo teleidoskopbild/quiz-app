@@ -49,13 +49,18 @@ button {
 /* .next-button:not(disabled):hover {
   border-color: #fff;
 } */
-
+.answer-button {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 .correct {
   border: 2px solid green;
 }
 
 .wrong {
   border: 2px solid red;
+}
+.neutral {
+  border: none;
 }
 
 /* .disabled {

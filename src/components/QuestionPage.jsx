@@ -13,7 +13,7 @@ function QuestionPage({ setPage, setCorrectAnswers, quizQuestions }) {
       quizQuestions.map((question) => ({
         // maps over every question in quiz questions
         ...question, // creates new object using the spread operator which copies all properties from current question into new object with a new options property
-        options: shuffleArray([...question.options]), // shuffles the options for the current question and its options property,
+        options: shuffleArray([...question.options]) // shuffles the options for the current question and its options property,
       }))
     )
   );
@@ -61,7 +61,15 @@ function QuestionPage({ setPage, setCorrectAnswers, quizQuestions }) {
           <button
             key={option.id}
             onClick={() => handleAnswerClick(option)}
-            className={selectedAnswer === option ? answerStatus : ""}
+            className={`answer-button ${
+              answerStatus === "correct" && selectedAnswer === option
+                ? "correct"
+                : ""
+            } ${
+              answerStatus === "wrong" && selectedAnswer === option
+                ? "wrong"
+                : ""
+            }`}
           >
             {option.text}
           </button>
