@@ -1,39 +1,88 @@
-/* Container styling */
+/* Container styling (main box) */
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+  margin: 0 auto;
+  max-width: 900px;
+  max-height: fit-content;
   text-align: center;
-  margin: 50px auto;
-  max-width: 800px;
+  gap: 20px; /* Add gap between items */
+  background-color: #f0f0f0; /* Light background for the box */
+  border: 2px solid #ddd; /* Add border to make it look like a box */
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow for depth */
 }
 
-/* Headings */
-h1 {
-  font-size: 2.5rem;
+/* Headings styling */
+.result-title {
+  font-size: 2rem;
   margin-bottom: 20px;
   color: white;
+  background-color: #4caf50; /* Green background for heading */
+  padding: 10px;
+  border-radius: 5px;
 }
 
-/* Score and statistics */
-p {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  color: #555;
+/* General button styling for both links and buttons */
+.result-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  margin-top: 15px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%; /* Set full width for both buttons */
+  max-width: 300px; /* Set a maximum width to make them consistent */
 }
 
-/* Image styling */
-img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  transition: transform 0.3s ease, filter 0.3s ease;
+/* Button hover effect */
+.result-btn:hover {
+  background-color: #45a049;
 }
 
-/* Hover effect on images */
-img:hover {
-  transform: scale(1.05);
-  filter: brightness(0.9);
+/* Footer button styling */
+.result-btn {
+  margin-top: 20px;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 30px;
+  width: 70%;
+  text-align: center;
+  height: auto;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    max-width: 90%;
+    padding: 10px;
+  }
+
+  img {
+    height: auto; /* Image height auto for responsive design */
+  }
+
+  .result-btn {
+    width: 100%; /* Full width buttons on small screens */
+    padding: 15px;
+    border-radius: 10px;
+  }
+
+  .result-title {
+    font-size: 1.5rem; /* Smaller font size for heading */
+  }
+}
+
+/* Arrow icon styling */
+.fas.fa-arrow-right {
+  margin-left: 10px;
 }
