@@ -49,6 +49,7 @@ export default function App() {
           <ResultPage
             setPage={setPage}
             correctAnswers={correctAnswers}
+            setCorrectAnswers={setCorrectAnswers}
           ></ResultPage>
         </div>
       )}

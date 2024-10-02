@@ -4,7 +4,7 @@ import { quizQuestions } from "../data/questions";
 
 const shuffleArray = (array) => array.toSorted(() => Math.random() - 0.5);
 
-function QuestionPage({ setPage, /*correctAnswers,*/ setCorrectAnswers }) {
+function QuestionPage({ setPage, /*correctAnswers*/ setCorrectAnswers }) {
   // const questions = quizQuestions;
   // const [questions] = useState(shuffleArray([...quizQuestions]));  // <------- needs to be a state otherwise shuffles on every re-render
   const [questions] = useState(
