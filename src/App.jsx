@@ -12,16 +12,10 @@ import { users as initialUsers } from "./data/Users.js";
 export default function App() {
   const [page, setPage] = useState("welcome");
   const [correctAnswers, setCorrectAnswers] = useState(0);
-<<<<<<< HEAD
-  const [currentUser, setCurrentUser] = useState({
-    firstname: "Guest",
-    lastname: "Guest",
-=======
   const [users, setUsers] = useState(initialUsers);
   const [currentUser, setCurrentUser] = useState({
     firstname: "Guest",
     lastname: "",
->>>>>>> main
   });
   const [selectedCategory, setSelectedCategory] = useState("");
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -52,14 +46,7 @@ export default function App() {
       {page === "register" && (
         <RegiserPage
           setPage={setPage}
-<<<<<<< HEAD
-          userName={userName} // Pass user's name
-          setCorrectAnswers={setCorrectAnswers}
-          quizQuestions={quizQuestions}
-          allAnswers={allAnswers}
-=======
           page={page}
->>>>>>> main
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
           users={users}
