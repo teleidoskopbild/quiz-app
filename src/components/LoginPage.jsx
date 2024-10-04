@@ -1,8 +1,6 @@
 import { useState } from "react";
-// import { users } from "./data/Users.js";
-// import RegistrationForm from "./RegistrationPage.jsx";
+
 import loginImage from "../assets/logo-login.jpg";
-import CategoriesPage from "./CategoriesPage";
 import "./WelcomePage.css";
 
 export default function LoginPage({
@@ -27,13 +25,6 @@ export default function LoginPage({
     let errors = {};
     let hasError = false;
 
-    // setCurrentUser(
-    //   users.find(
-    //     (item) =>
-    //       item.username === inputValue.username &&
-    //       item.password === inputValue.password
-    //   )
-    // );
     const validUser = users.find(
       (item) =>
         item.username === inputValue.username &&
