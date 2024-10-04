@@ -10,7 +10,10 @@ import CategoriesPage from "./components/CategoriesPage.jsx";
 export default function App() {
   const [page, setPage] = useState("welcome");
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({
+    firstname: "Guest",
+    lastname: "Guest",
+  });
   const [selectedCategory, setSelectedCategory] = useState("");
   const [quizQuestions, setQuizQuestions] = useState([]);
 
@@ -35,6 +38,7 @@ export default function App() {
           setPage={setPage}
           setSelectedCategory={setSelectedCategory}
           setQuizQuestions={setQuizQuestions}
+          currentUser={currentUser}
         />
       )}
       {page === "quiz" && (
@@ -44,6 +48,7 @@ export default function App() {
           setCorrectAnswers={setCorrectAnswers}
           selectedCategory={selectedCategory}
           quizQuestions={quizQuestions}
+          currentUser={currentUser}
         />
       )}
 
