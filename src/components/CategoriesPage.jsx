@@ -4,7 +4,12 @@ import { generalKnowledgeQuizQuestions } from "../data/generalKnowledgeQuestions
 import { movieQuizQuestions } from "../data/movieQuestions";
 import { programmingQuizQuestions } from "../data/programmingQuestions";
 
-const CategoriesPage = ({ setPage, setSelectedCategory, setQuizQuestions }) => {
+const CategoriesPage = ({
+  setPage,
+  setSelectedCategory,
+  setQuizQuestions,
+  currentUser,
+}) => {
   const handleCategorySelect = (category) => {
     let questions;
     switch (category) {
@@ -28,7 +33,11 @@ const CategoriesPage = ({ setPage, setSelectedCategory, setQuizQuestions }) => {
 
   return (
     <div className="quiz-container">
+      <p className="logged">
+        Logged in as: {currentUser.firstname} {currentUser.lastname}
+      </p>
       <h1 className="quiz-title">Select a Quiz Category</h1>
+      <h2></h2>
       <div className="options-container">
         <button onClick={() => handleCategorySelect("capitals")}>
           Capitals
