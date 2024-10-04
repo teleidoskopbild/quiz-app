@@ -65,6 +65,12 @@ function QuestionPage({
         Logged in as: {currentUser.firstname} {currentUser.lastname}
       </p>
       <h1 className="quiz-title">Quiz Page</h1>
+      <div className="progressBarContainer">
+        <div
+          className="progressBar"
+          style={{ width: `${progressBar}%` }} // gets the widths through the function dynamically
+        ></div>
+      </div>
       <h2 className="quiz-question">{question.question}</h2>
       <div className="options-container">
         {question.options.map((option) => (
@@ -92,12 +98,7 @@ function QuestionPage({
       >
         {currentIndex < questions.length - 1 ? "Next Question" : "Finish Quiz"}
       </button>
-      <div className="progressBarContainer">
-        <div
-          className="progressBar"
-          style={{ width: `${progressBar}%` }} // gets the widths through the function dynamically
-        ></div>
-      </div>
+
       {/* <div className="score">
         Score: {correctAnswers} / {questions.length}
       </div> */}
