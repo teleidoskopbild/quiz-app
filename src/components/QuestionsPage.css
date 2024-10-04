@@ -79,7 +79,7 @@ button {
 } */
 
 @media (max-width: 320px) {
-  root {
+  :root {
     padding: 0;
     margin: 0 auto;
   }
@@ -135,26 +135,16 @@ button {
   border-radius: 6px;
 }
 
-@media (min-width: 321px) and (max-width: 768px) {
+@media (min-width: 321px) and (max-width: 468px) {
   .quiz-container {
-    width: 90%;
-    max-width: 600px;
-    padding: 0.5rem;
+    width: 300px;
+    padding: 0;
   }
+}
 
-  .quiz-title {
-    font-size: 2rem;
-  }
-
-  .quiz-question {
-    font-size: 1.2rem;
-  }
-
-  button {
-    width: 90%;
-  }
-
-  .progressBarContainer {
-    width: 90%;
+@media (min-width: 469px) and (max-width: 768px) {
+  .quiz-container {
+    width: 450px;
+    padding: 0;
   }
 }
