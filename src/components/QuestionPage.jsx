@@ -4,7 +4,12 @@ import "./QuestionsPage.css";
 
 const shuffleArray = (array) => array.toSorted(() => Math.random() - 0.5);
 
-function QuestionPage({ setPage, setCorrectAnswers, quizQuestions }) {
+function QuestionPage({
+  setPage,
+  setCorrectAnswers,
+  quizQuestions,
+  currentUser,
+}) {
   // const questions = quizQuestions;
   // const [questions] = useState(shuffleArray([...quizQuestions]));  // <------- needs to be a state otherwise shuffles on every re-render
   const [questions] = useState(
@@ -23,6 +28,8 @@ function QuestionPage({ setPage, setCorrectAnswers, quizQuestions }) {
   // const [correctAnswers, setCorrectAnswers] = useState(0); <--------------------- in App.jsx now
   const [answerStatus, setAnswerStatus] = useState("");
   const [buttonsDisabled, setButtonsDisabled] = useState(false);
+
+  const progressBar = ((currentIndex + 1) / questions.length) * 100;
 
   const handleAnswerClick = (option) => {
     setSelectedAnswer(option);
@@ -54,14 +61,31 @@ function QuestionPage({ setPage, setCorrectAnswers, quizQuestions }) {
 
   return (
     <div className={`quiz-container ${buttonsDisabled ? "disabled" : ""}`}>
+      <p className="logged">
+        Logged in as: {currentUser.firstname} {currentUser.lastname}
+      </p>
       <h1 className="quiz-title">Quiz Page</h1>
+      <div className="progressBarContainer">
+        <div
+          className="progressBar"
+          style={{ width: `${progressBar}%` }} // gets the widths through the function dynamically
+        ></div>
+      </div>
       <h2 className="quiz-question">{question.question}</h2>
       <div className="options-container">
         {question.options.map((option) => (
           <button
             key={option.id}
             onClick={() => handleAnswerClick(option)}
-            className={selectedAnswer === option ? answerStatus : ""}
+            className={`answer-button ${
+              answerStatus === "correct" && selectedAnswer === option
+                ? "correct"
+                : ""
+            } ${
+              answerStatus === "wrong" && selectedAnswer === option
+                ? "wrong"
+                : ""
+            }`}
           >
             {option.text}
           </button>
@@ -74,6 +98,7 @@ function QuestionPage({ setPage, setCorrectAnswers, quizQuestions }) {
       >
         {currentIndex < questions.length - 1 ? "Next Question" : "Finish Quiz"}
       </button>
+
       {/* <div className="score">
         Score: {correctAnswers} / {questions.length}
       </div> */}

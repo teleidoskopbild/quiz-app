@@ -71,12 +71,12 @@ export const capitalQuizQuestions = [
   },
   {
     id: 8,
-    question: "What is the capital of Russia?",
+    question: "What is the capital of Ukraine?",
     options: [
-      { id: 1, text: "Moscow", isCorrect: true },
-      { id: 2, text: "Saint Petersburg", isCorrect: false },
-      { id: 3, text: "Novosibirsk", isCorrect: false },
-      { id: 4, text: "Kazan", isCorrect: false },
+      { id: 1, text: "Kyiv", isCorrect: true },
+      { id: 2, text: "Kharkiv", isCorrect: false },
+      { id: 3, text: "Odesa", isCorrect: false },
+      { id: 4, text: "Lviv", isCorrect: false },
     ],
   },
   {

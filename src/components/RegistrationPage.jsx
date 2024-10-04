@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function RegistrationForm({ showPage, setShowPage, setUsers, users }) {
+function RegistrationForm({ setUsers, users, page, setPage }) {
   const [inputValue, setInputValue] = useState({
     firstname: "",
     lastname: "",
@@ -8,8 +8,6 @@ function RegistrationForm({ showPage, setShowPage, setUsers, users }) {
     email: "",
     password: "",
   });
-
-  console.log(showPage, setShowPage);
 
   const [errorMessage, setErrorMessage] = useState({
     username: "",
@@ -22,16 +20,7 @@ function RegistrationForm({ showPage, setShowPage, setUsers, users }) {
     event.preventDefault();
     let errors = {};
     let hasError = false;
-    // if (
-    //   !inputValue.firstname ||
-    //   !inputValue.lastname ||
-    //   !inputValue.username ||
-    //   !inputValue.email ||
-    //   !inputValue.password
-    // ) {
-    //   console.log("Bitte alle Felder ausfüllen!");
-    //   return;
-    // }
+
     if (!inputValue.firstname) {
       errors.firstname = "Firstname darf nicht leer sein";
       hasError = true;
@@ -78,9 +67,7 @@ function RegistrationForm({ showPage, setShowPage, setUsers, users }) {
       email: "",
       password: "",
     });
-    console.log(setShowPage);
-    // alert("Benutzer erfolgreich !");
-    setShowPage("login");
+    setPage("login");
   };
 
   return (
@@ -180,7 +167,7 @@ function RegistrationForm({ showPage, setShowPage, setUsers, users }) {
           <button type="submit">Register</button>
         </form>
 
-        <div>
+        {/* <div>
           <ul>
             {users.map((user, index) => (
               <li key={index}>
@@ -188,7 +175,7 @@ function RegistrationForm({ showPage, setShowPage, setUsers, users }) {
               </li>
             ))}
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );
