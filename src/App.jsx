@@ -6,13 +6,16 @@ import AdvertisementPage from "./components/Ads-page.jsx";
 import ResultPage from "./components/ResultsPage.jsx";
 import RegiserPage from "./components/RegistrationPage.jsx";
 import CategoriesPage from "./components/CategoriesPage.jsx";
+import LoginPage from "./components/LoginPage.jsx";
+import { users as initialUsers } from "./data/Users.js";
 
 export default function App() {
   const [page, setPage] = useState("welcome");
   const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [users, setUsers] = useState(initialUsers);
   const [currentUser, setCurrentUser] = useState({
     firstname: "Guest",
-    lastname: "Guest",
+    lastname: "",
   });
   const [selectedCategory, setSelectedCategory] = useState("");
   const [quizQuestions, setQuizQuestions] = useState([]);
@@ -24,13 +27,29 @@ export default function App() {
           setPage={setPage}
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
+          page={page}
+          users={users}
+          setUsers={setUsers}
+        />
+      )}
+      {page === "login" && (
+        <LoginPage
+          setPage={setPage}
+          page={page}
+          setCurrentUser={setCurrentUser}
+          currentUser={currentUser}
+          users={users}
+          setUsers={setUsers}
         />
       )}
       {page === "register" && (
         <RegiserPage
           setPage={setPage}
+          page={page}
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
+          users={users}
+          setUsers={setUsers}
         />
       )}
       {page === "categories" && (

@@ -1,14 +1,14 @@
 import { useState } from "react";
-// import { users } from "./data/Users.js";
-import RegistrationForm from "./RegistrationPage.jsx";
+
+import loginImage from "../assets/logo-login.jpg";
 import "./WelcomePage.css";
 
 export default function LoginPage({
-  onLogin,
   setPage,
-  showPage,
-  setShowPage,
+  page,
   users,
+  setCurrentUser,
+  currentUser,
 }) {
   const [inputValue, setInputValue] = useState({
     username: "",
@@ -30,6 +30,7 @@ export default function LoginPage({
         item.username === inputValue.username &&
         item.password === inputValue.password
     );
+    setCurrentUser(validUser);
     if (!inputValue.username) {
       errors.username = "Username darf nicht leer sein";
       hasError = true;
@@ -44,7 +45,8 @@ export default function LoginPage({
       setErrorMessage(errors);
       return;
     }
-    if (validUser) {
+    if (currentUser) {
+      setPage("categories");
       setInputValue({
         username: "",
         password: "",
@@ -53,79 +55,73 @@ export default function LoginPage({
         username: "",
         password: "",
       });
-      onLogin(validUser.firstname, validUser.lastname);
-      setPage("quiz");
     }
-    // setSubmitData();
   };
-  // if (showRegistration) {
-  //   return <RegistrationForm />;
-  // }
-
-  // <RegistrationForm
-  //   setPage={setPage}
-  //   showPage={showPage}
-  //   setShowPage={setShowPage}
-  // />;
 
   return (
-    <div className="login-container">
-      <form onSubmit={handleSubmit} className="login-form">
-        <div>
-          <label htmlFor="username">Username: </label>
-          <input
-            type="text"
-            name="username"
-            value={inputValue.username}
-            onChange={(e) =>
-              setInputValue({ ...inputValue, username: e.target.value })
-            }
-            style={{
-              border: errorMessage.username ? "1px solid red" : "",
-            }}
-          />
-          {/* {errorMessage.username && <p>{errorMessage.username}</p>} */}
-          {errorMessage.username && !inputValue.username ? (
-            <p>{errorMessage.username}</p>
-          ) : undefined}
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input
-            type="password"
-            name="password"
-            value={inputValue.password}
-            onChange={(e) =>
-              setInputValue({ ...inputValue, password: e.target.value })
-            }
-            style={{
-              border: errorMessage.username ? "1px solid red" : "",
-            }}
-          />
-        </div>
+    <div className="login">
+      <div className="login-text">
+        <h2>Let&#39;s play quiz!</h2>
+        <img id="theme-image" src={loginImage} alt="Quiz App" />
 
-        {errorMessage.password && !inputValue.password ? (
-          <p>{errorMessage.password}</p>
-        ) : undefined}
-        <div className="button-row">
-          <button type="submit">Login</button>
-          {/* <button onClick={() => RegistrationForm()}>Registrieren</button> */}
-          <button
-            onClick={() => {
-              setShowPage("register");
-            }}
-          >
-            Registrieren
-          </button>
-          <button
-            onClick={() => {
-              setPage("categories");
-            }}
-          >
-            Quiz Start!
-          </button>
-        </div>
-      </form>
+        <p>Enter your information below</p>
+      </div>
+      <div className="login-container">
+        <form onSubmit={handleSubmit} className="login-form">
+          <div>
+            <label htmlFor="username">Username: </label>
+            <input
+              type="text"
+              name="username"
+              value={inputValue.username}
+              onChange={(e) =>
+                setInputValue({ ...inputValue, username: e.target.value })
+              }
+              style={{
+                border: errorMessage.username ? "1px solid red" : "",
+              }}
+            />
+            {errorMessage.username && !inputValue.username ? (
+              <p>{errorMessage.username}</p>
+            ) : undefined}
+          </div>
+          <div>
+            <label htmlFor="password">Password: </label>
+            <input
+              type="password"
+              name="password"
+              value={inputValue.password}
+              onChange={(e) =>
+                setInputValue({ ...inputValue, password: e.target.value })
+              }
+              style={{
+                border: errorMessage.username ? "1px solid red" : "",
+              }}
+            />
+          </div>
+
+          {errorMessage.password && !inputValue.password ? (
+            <p>{errorMessage.password}</p>
+          ) : undefined}
+          <div className="button-row">
+            <button type="submit">Login</button>
+            <button
+              onClick={() => {
+                setPage("register");
+              }}
+            >
+              Registrieren
+            </button>
+            <button
+              onClick={() => {
+                setPage("categories");
+              }}
+            >
+              Quiz Start!
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
