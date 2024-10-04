@@ -1,88 +1,129 @@
-/* Container styling (main box) */
-.container {
+/* Result page styling as before */
+.result-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: rgb(24, 25, 25);
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  margin: 0 auto;
-  max-width: 900px;
-  max-height: fit-content;
-  text-align: center;
-  gap: 20px; /* Add gap between items */
-  background-color: #f0f0f0; /* Light background for the box */
-  border: 2px solid #ddd; /* Add border to make it look like a box */
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Add slight shadow for depth */
+  gap: 15px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
-/* Headings styling */
-.result-title {
+.result-page h2 {
   font-size: 2rem;
-  margin-bottom: 20px;
-  color: white;
-  background-color: #4caf50; /* Green background for heading */
-  padding: 10px;
-  border-radius: 5px;
+  margin-bottom: 15px;
+  text-align: center;
 }
 
-/* General button styling for both links and buttons */
-.result-btn {
-  display: inline-block;
-  padding: 12px 25px;
-  margin-top: 15px;
+.result-page p {
+  font-size: 1.2rem;
+  text-align: center;
+  margin: 0;
+}
+
+/* Reuse styles for correct/incorrect tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 20px;
+  text-align: left;
+}
+
+th {
+  background-color: #252424;
+  font-weight: bold;
+}
+
+.retry-button {
   background-color: #4caf50;
   color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+  border: none;
+  padding: 20px;
   font-size: 1rem;
+  border-radius: 5px;
   cursor: pointer;
-  width: 100%; /* Set full width for both buttons */
-  max-width: 300px; /* Set a maximum width to make them consistent */
+  margin-top: 30px;
+  align-self: center;
+  margin-bottom: 30px;
 }
 
-/* Button hover effect */
-.result-btn:hover {
+.retry-button:hover {
   background-color: #45a049;
 }
 
-/* Footer button styling */
-.result-btn {
-  margin-top: 20px;
+/* Responsive Design */
+@media (max-width: 600px) {
+  .result-page {
+    padding: 40px;
+  }
+
+  .result-page h2 {
+    font-size: 2rem;
+  }
+
+  .result-page p,
+  .result-page li {
+    font-size: 1.8rem;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+
+  .retry-button {
+    font-size: 1.9rem;
+    padding: 12px;
+  }
 }
 
-/* Footer styling */
-footer {
-  margin-top: 30px;
-  width: 70%;
+/* Top 5 Users table */
+.top-users-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.top-users-table th,
+.top-users-table td {
+  border: 1px solid #ccc;
+  padding: 10px;
   text-align: center;
-  height: auto;
 }
 
-/* Responsive layout for smaller screens */
-@media (max-width: 768px) {
-  .container {
-    max-width: 90%;
-    padding: 10px;
-  }
-
-  img {
-    height: auto; /* Image height auto for responsive design */
-  }
-
-  .result-btn {
-    width: 100%; /* Full width buttons on small screens */
-    padding: 15px;
-    border-radius: 10px;
-  }
-
-  .result-title {
-    font-size: 1.5rem; /* Smaller font size for heading */
-  }
+/* Styling for correct/incorrect answers table */
+.correct-answers-table,
+.incorrect-answers-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  border: 5px solid;
 }
 
-/* Arrow icon styling */
-.fas.fa-arrow-right {
-  margin-left: 10px;
+.correct-answers-table th,
+.incorrect-answers-table th,
+.correct-answers-table td,
+.incorrect-answers-table td {
+  border: 5px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+/* Style for the result title */
+.result-title {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white; /* You can adjust the color if needed */
 }

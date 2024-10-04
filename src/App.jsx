@@ -10,9 +10,13 @@ import CategoriesPage from "./components/CategoriesPage.jsx";
 export default function App() {
   const [page, setPage] = useState("welcome");
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({
+    firstname: "Guest",
+    lastname: "Guest",
+  });
   const [selectedCategory, setSelectedCategory] = useState("");
   const [quizQuestions, setQuizQuestions] = useState([]);
+  // const [allAnswers, setAllAnswers] = useState([]);
 
   return (
     <div>
@@ -26,6 +30,10 @@ export default function App() {
       {page === "register" && (
         <RegiserPage
           setPage={setPage}
+          userName={userName} // Pass user's name
+          setCorrectAnswers={setCorrectAnswers}
+          quizQuestions={quizQuestions}
+          allAnswers={allAnswers}
           currentUser={currentUser}
           setCurrentUser={setCurrentUser}
         />
@@ -63,6 +71,9 @@ export default function App() {
             correctAnswers={correctAnswers}
             setCorrectAnswers={setCorrectAnswers}
             quizQuestions={quizQuestions}
+            // allAnswers={allAnswers} // Pass down the answers for the result page
+            // userName={currentUser.name}
+            currentUser={currentUser}
           ></ResultPage>
         </div>
       )}
