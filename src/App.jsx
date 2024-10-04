@@ -12,8 +12,11 @@ import { users as initialUsers } from "./data/Users.js";
 export default function App() {
   const [page, setPage] = useState("welcome");
   const [correctAnswers, setCorrectAnswers] = useState(0);
-  const [currentUser, setCurrentUser] = useState({});
   const [users, setUsers] = useState(initialUsers);
+  const [currentUser, setCurrentUser] = useState({
+    firstname: "Guest",
+    lastname: "",
+  });
   const [selectedCategory, setSelectedCategory] = useState("");
   const [quizQuestions, setQuizQuestions] = useState([]);
 
@@ -64,6 +67,7 @@ export default function App() {
           setCorrectAnswers={setCorrectAnswers}
           selectedCategory={selectedCategory}
           quizQuestions={quizQuestions}
+          currentUser={currentUser}
         />
       )}
 
