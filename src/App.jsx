@@ -19,6 +19,7 @@ export default function App() {
   });
   const [selectedCategory, setSelectedCategory] = useState("");
   const [quizQuestions, setQuizQuestions] = useState([]);
+  // const [allAnswers, setAllAnswers] = useState([]);
 
   return (
     <div>
@@ -87,6 +88,9 @@ export default function App() {
             correctAnswers={correctAnswers}
             setCorrectAnswers={setCorrectAnswers}
             quizQuestions={quizQuestions}
+            // allAnswers={allAnswers} // Pass down the answers for the result page
+            // userName={currentUser.name}
+            currentUser={currentUser}
           ></ResultPage>
         </div>
       )}

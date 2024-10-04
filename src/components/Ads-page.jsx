@@ -3,7 +3,7 @@ import car from "../assets/car.mp4"; // Update to import the video file
 
 const AdvertisementPage = ({ setPage }) => {
   return (
-    <div className="container">
+    <div className="ads-container">
       <header>
         <h2 className="ads-title">Advertisement Page</h2>
       </header>
@@ -32,7 +32,7 @@ const AdvertisementPage = ({ setPage }) => {
       </main>
 
       <footer>
-        <button className="result_btn" onClick={() => setPage("result")}>
+        <button className="btn" onClick={() => setPage("result")}>
           Go to Result Page
           <i className="fas fa-arrow-right"></i>
         </button>
